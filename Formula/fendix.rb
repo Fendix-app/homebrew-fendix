@@ -12,25 +12,25 @@ class Fendix < Formula
   desc "Hybrid API and code security scanner"
   homepage "https://github.com/Abdel-RahmanSaied/homebrew-fendix"
   license "MIT"
-  version "3.3.0"
+  version "3.4.0"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/Abdel-RahmanSaied/homebrew-fendix/releases/download/v#{version}/fendix-v#{version}-darwin-arm64"
-      sha256 "b55f75aa50270ccde7cd0af7d2e2729d9d3349969e59098e483411b8772bf466"
+      sha256 "ed4710301a6d38e43f3e8efcfd269c772d82e64e2cd34786128890d624226626"
     else
       url "https://github.com/Abdel-RahmanSaied/homebrew-fendix/releases/download/v#{version}/fendix-v#{version}-darwin-amd64"
-      sha256 "e8c87d4bc8d0782fdd2ef7b69f7786d7738af0222333c34cc14ce52a8ff492cf"
+      sha256 "e406a891e82dbdb0debcb6977ae59f4d82a97b8b2f4718d7a13567e7a7fc97b6"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
       url "https://github.com/Abdel-RahmanSaied/homebrew-fendix/releases/download/v#{version}/fendix-v#{version}-linux-arm64"
-      sha256 "2d9a7569708060c65bed93edd43b7e92b700fbd4fcfd1e3bb241f696d16e62cd"
+      sha256 "53a48dd6ab231699eb961d8e551bb52d4abc7b3a8944c563e80a3a0abc2a64c0"
     else
       url "https://github.com/Abdel-RahmanSaied/homebrew-fendix/releases/download/v#{version}/fendix-v#{version}-linux-amd64"
-      sha256 "c54da511d3a7cbc8b94d3c31a05b28e18c759fa8d9f000d86c602cb703abd1bd"
+      sha256 "b0fc0063b3d59e87f57c102bcf614f3852e528fcf3cec6efce5e5ee016f7bbb6"
     end
   end
 
