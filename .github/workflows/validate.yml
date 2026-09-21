@@ -1,0 +1,28 @@
+name: Validate distribution files
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Validate scripts and public references
+        run: ./tests/validate.sh
+      - name: Verify official release assets and checksums
+        run: ./tests/verify-release-assets.sh
+      - name: Prepare official tap checkout for Homebrew audit
+        run: |
+          brew tap Fendix-app/fendix
+          cp Formula/fendix.rb "$(brew --repo Fendix-app/fendix)/Formula/fendix.rb"
+          brew trust --formula Fendix-app/fendix/fendix
+      - name: Audit formula
+        run: brew audit --strict --online Fendix-app/fendix/fendix
+      - name: Style formula
+        run: brew style Fendix-app/fendix/fendix
