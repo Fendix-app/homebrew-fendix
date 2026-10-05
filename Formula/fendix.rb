@@ -12,6 +12,7 @@ class Fendix < Formula
   desc "Application security scanner with evidence-backed release decisions"
   homepage "https://fendix.dev"
   license "MIT"
+  version_scheme 1
 
   depends_on "python@3.11" => :recommended
 
@@ -41,12 +42,16 @@ class Fendix < Formula
 
   def caveats
     <<~EOC
-      The default scanner is a single Go binary. Python 3.11 is installed as a
-      recommended dependency for the optional --python-engine analysis path.
+      This formula installs the standalone Go binary and recommends a Python
+      interpreter, but it does not install the Fendix Python analyzer tree.
+      --code auto-enables that phase; without a version-matched tree through
+      FENDIX_ENGINE or an engine pin, the phase is recorded as skipped while
+      native analyzers continue. Use the official container or a source
+      checkout for ready-to-run hybrid coverage.
 
       Quick start:
         fendix scan --url https://api.example.com
-        fendix scan --code ./src --spec openapi.yaml --format html -o report.html
+        fendix scan --code ./src --python-engine=false --format html -o report.html
     EOC
   end
 
